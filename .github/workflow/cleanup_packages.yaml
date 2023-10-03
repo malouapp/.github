@@ -1,0 +1,19 @@
+name: 'Delete old docker images'
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  push:
+    branches:
+      - main
+jobs:
+  delete-old-docker-images:
+  uses: smartsquaregmbh/delete-old-packages@v0.7.0
+  with:
+    organization: malouapp
+    type: docker
+    keep: 10
+    names: |
+      malou-website
+      malou-website-dev
+      malou-backoffice
+      malou-backoffice-dev
